@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رأيك يصنع الفرق | نبض المحيط</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #041725;
+      --navy-light: #0a2b3d;
+      --turquoise: #45e0ce;
+      --white: #f4fbff;
+      --muted: #b7cbd5;
+      --gold: #e6c783;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      color: var(--white);
+      background: var(--navy);
+      line-height: 1.9;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(4, 23, 37, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(69, 224, 206, 0.2);
+    }
+
+    nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--turquoise);
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .links a:hover,
+    .links a.active {
+      color: var(--turquoise);
+    }
+
+    .hero {
+      min-height: 440px;
+      padding: 80px 22px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 23, 37, 0.35),
+          rgba(4, 23, 37, 0.97)
+        ),
+        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--turquoise);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.45;
+      margin-bottom: 15px;
+    }
+
+    h1 span {
+      color: var(--turquoise);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #e1edf2;
+      font-size: 16px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 11px 28px;
+      border-radius: 40px;
+      color: var(--navy);
+      background: var(--turquoise);
+      font-weight: 800;
+      transition: transform 0.2s;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 22px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .feedback-card {
+      max-width: 760px;
+      margin: auto;
+      padding: 35px;
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(12, 49, 68, 0.98),
+        rgba(6, 31, 47, 0.98)
+      );
+      border: 1px solid rgba(69, 224, 206, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    .field {
+      margin-bottom: 24px;
+    }
+
+    .field label,
+    .field legend {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .field input[type="text"],
+    .field select,
+    .field textarea {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      color: var(--white);
+      background: rgba(3, 19, 30, 0.65);
+      border: 1px solid rgba(183, 203, 213, 0.25);
+      border-radius: 12px;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--turquoise);
+    }
+
+    .field select option {
+      color: white;
+      background: var(--navy);
+    }
+
+    .field textarea {
+      min-height: 115px;
+      resize: vertical;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 10px;
+      direction: ltr;
+      justify-content: flex-end;
+    }
+
+    .stars input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+    }
+
+    .stars label {
+      font-size: 38px;
+      color: #657985;
+      cursor: pointer;
+      margin: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .stars label:hover {
+      transform: scale(1.15);
+    }
+
+    .stars label.selected {
+      color: var(--gold);
+    }
+
+    .submit-button {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 20px;
+      color: var(--navy);
+      background: linear-gradient(100deg, var(--turquoise), #9af1e6);
+      font: inherit;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+    }
+
+    #thankYou {
+      display: none;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 20px;
+      border: 1px solid rgba(69, 224, 206, 0.35);
+      border-radius: 15px;
+      background: rgba(69, 224, 206, 0.08);
+    }
+
+    #thankYou h3 {
+      color: var(--turquoise);
+      margin-bottom: 8px;
+    }
+
+    #thankYou p {
+      color: var(--muted);
+    }
+
+    .closing {
+      padding: 55px 22px;
+      text-align: center;
+      background: linear-gradient(120deg, #0b3a4b, #0a263a);
+      border-top: 1px solid rgba(69, 224, 206, 0.2);
+    }
+
+    .closing h2 {
+      color: var(--turquoise);
+      font-size: clamp(23px, 4vw, 31px);
+      margin-bottom: 10px;
+    }
+
+    .closing p {
+      color: var(--muted);
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 11px 25px;
+      border: 1px solid var(--turquoise);
+      border-radius: 30px;
+      color: var(--turquoise);
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .home-button:hover {
+      color: var(--navy);
+      background: var(--turquoise);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        justify-content: center;
+      }
+
+      .links {
+        justify-content: center;
+      }
+
+      .feedback-card {
+        padding: 23px 18px;
+      }
+
+      .section {
+        padding: 45px 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a class="logo" href="index.html">نبض المحيط</a>
+
+      <div class="links">
+        <a href="index.html">الرئيسية</a>
+        <a href="pollution.html">التلوث البحري</a>
+        <a href="technology.html">التقنية البحرية</a>
+        <a href="gallery.html">المعرض</a>
+        <a href="facts.html">حقائق</a>
+        <a href="feedback.html" class="active">رأيك يهمنا</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">OCEAN PULSE · YOUR VOICE MATTERS</span>
+
+      <h1>
+        رأيك يصنع <span>الفرق</span>
+      </h1>
+
+      <p>
+        شكرًا لزيارتك موقع نبض المحيط.
+        يسعدنا أن تشاركنا رأيك، فكل فكرة واقتراح
+        يساعداننا على تطوير المشروع ونشر الوعي بحماية محيطاتنا.
+      </p>
+
+      <a href="#feedback" class="hero-button">شاركنا رأيك</a>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="section" id="feedback">
+
+      <div class="section-heading">
+        <span class="eyebrow">WE VALUE YOUR OPINION</span>
+        <h2>يسعدنا أن نسمع منك</h2>
+        <p>املأ الحقول التالية وشاركنا تجربتك.</p>
+      </div>
+
+      <form class="feedback-card" id="feedbackForm">
+
+        <div class="field">
+          <label for="visitorName">الاسم</label>
+          <input
+            type="text"
+            id="visitorName"
+            name="visitorName"
+            placeholder="اكتب اسمك هنا"
+            required>
+        </div>
+
+        <fieldset class="field" style="border:0">
+          <legend>كيف تقيّم تجربتك في الموقع؟</legend>
+
+          <div class="stars" id="stars">
+            <input type="radio" id="star1" name="rating" value="1" required>
+            <label for="star1" data-value="1" aria-label="نجمة واحدة">★</label>
+
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2" data-value="2" aria-label="نجمتان">★</label>
+
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3" data-value="3" aria-label="ثلاث نجوم">★</label>
+
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4" data-value="4" aria-label="أربع نجوم">★</label>
+
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5" data-value="5" aria-label="خمس نجوم">★</label>
+          </div>
+
+          <p class="hint">اختَر عدد النجوم الذي يناسب تجربتك.</p>
+        </fieldset>
+
+        <div class="field">
+          <label for="favorite">ما أكثر شيء أعجبك في الموقع؟</label>
+          <select id="favorite" name="favorite" required>
+            <option value="">اختر إجابتك</option>
+            <option value="التصميم والألوان">التصميم والألوان</option>
+            <option value="معلومات التلوث البحري">معلومات التلوث البحري</option>
+            <option value="فكرة التقنية البحرية">فكرة التقنية البحرية</option>
+            <option value="الحقائق والصور">الحقائق والصور</option>
+            <option value="جميع ما سبق">جميع ما سبق</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="learned">هل تعرّفت على معلومات جديدة؟</label>
+          <select id="learned" name="learned" required>
+            <option value="">اختر إجابتك</option>
+            <option value="نعم">نعم، تعلّمت معلومات جديدة</option>
+            <option value="إلى حد ما">إلى حد ما</option>
+            <option value="لا">لا</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="opinion">اكتب رأيك في المشروع</label>
+          <textarea
+            id="opinion"
+            name="opinion"
+            placeholder="ما رأيك في موقع نبض المحيط؟"
+            required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="suggestion">اقتراحك لتطوير الموقع</label>
+          <textarea
+            id="suggestion"
+            name="suggestion"
+            placeholder="شاركنا أي فكرة أو اقتراح..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">
+          إرسال الرأي
+        </button>
+
+        <div id="thankYou" role="status" aria-live="polite">
+          <h3>شكرًا لمشاركتك رأيك!</h3>
+          <p>
+            نعتز بوقتك واهتمامك بمشروع نبض المحيط.
+            معًا نصنع مستقبلًا أفضل لمحيطاتنا.
+          </p>
+        </div>
+
+      </form>
+    </section>
+
+    <section class="closing">
+      <h2>محيط أنظف يبدأ بفكرة</h2>
+      <p>
+        «المحيط ليس مجرد عالم نكتشفه، بل أمانة نحافظ عليها للأجيال القادمة».
+      </p>
+
+      <a href="index.html" class="home-button">
+        العودة إلى الصفحة الرئيسية
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>نبض المحيط | Ocean Pulse © <span id="year"></span></p>
+    <p>معًا من أجل محيطات أكثر نظافة واستدامة.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const starLabels = document.querySelectorAll(".stars label");
+    const starInputs = document.querySelectorAll(
+      '.stars input[name="rating"]'
+    );
+
+    function updateStars(value) {
+      starLabels.forEach(label => {
+        const number = Number(label.dataset.value);
+        label.classList.toggle("selected", number <= value);
+      });
+    }
+
+    starInputs.forEach(input => {
+      input.addEventListener("change", () => {
+        updateStars(Number(input.value));
+      });
+    });
+
+    starLabels.forEach(label => {
+      label.addEventListener("mouseenter", () => {
+        updateStars(Number(label.dataset.value));
+      });
+    });
+
+    document.getElementById("stars").addEventListener(
+      "mouseleave", () => {
+        const selected = document.querySelector(
+          '.stars input[name="rating"]:checked'
+        );
+        updateStars(selected ? Number(selected.value) : 0);
+      }
+    );
+
+    document.getElementById("feedbackForm").addEventListener(
+      "submit", function(event) {
+        event.preventDefault();
+
+        document.getElementById("thankYou").style.display = "block";
+
+        document.getElementById("thankYou").scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+    );
+  </script>
+
+</body>
+</html>

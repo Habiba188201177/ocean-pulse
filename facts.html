@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حقائق بحرية | نبض المحيط</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #061b2b;
+            color: white;
+            line-height: 1.9;
+        }
+
+        header {
+            background: #08283b;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #176b78;
+        }
+
+        .logo {
+            color: #62e5dc;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #62e5dc;
+        }
+
+        .hero {
+            min-height: 410px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(3, 22, 36, 0.68),
+                rgba(3, 22, 36, 0.86)),
+                url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #62e5dc;
+            color: #62e5dc;
+            padding: 5px 17px;
+            border-radius: 30px;
+            margin-bottom: 17px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 53px);
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        h1 span,
+        .section-title span {
+            color: #62e5dc;
+        }
+
+        .hero p {
+            color: #e0edf2;
+            font-size: 17px;
+            max-width: 650px;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #b8cbd5;
+            max-width: 760px;
+            margin: 0 auto 35px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .fact-card {
+            background: #0b2b40;
+            border: 1px solid #17475a;
+            border-radius: 14px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+            border-color: #62e5dc;
+        }
+
+        .fact-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .fact-card h3 {
+            color: #62e5dc;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .fact-card p {
+            color: #c4d4dc;
+            font-size: 14px;
+        }
+
+        .ocean-section {
+            background: #082236;
+        }
+
+        .feature {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            align-items: center;
+        }
+
+        .feature img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 1px solid #287987;
+        }
+
+        .feature-text h3 {
+            color: #62e5dc;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .feature-text p {
+            color: #d0e0e6;
+            margin-bottom: 12px;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #0b3548, #0b263b);
+        }
+
+        .quiz-box {
+            max-width: 800px;
+            margin: auto;
+            background: #082236;
+            border: 1px solid #287987;
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .question {
+            padding: 20px 0;
+            border-bottom: 1px solid #17475a;
+        }
+
+        .question:last-of-type {
+            border-bottom: none;
+        }
+
+        .question h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .question label {
+            display: block;
+            background: #0b2b40;
+            border: 1px solid #17475a;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 8px 0;
+            cursor: pointer;
+            color: #d0e0e6;
+            transition: 0.2s;
+        }
+
+        .question label:hover {
+            border-color: #62e5dc;
+        }
+
+        .question input {
+            margin-left: 8px;
+            accent-color: #62e5dc;
+        }
+
+        .button {
+            display: inline-block;
+            background: #62e5dc;
+            color: #062536;
+            border: none;
+            text-decoration: none;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 18px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: white;
+        }
+
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #0b3548;
+            border: 1px solid #287987;
+            color: #62e5dc;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .closing {
+            text-align: center;
+            background: #08283b;
+        }
+
+        .closing p {
+            color: #c4d4dc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background: #041522;
+            color: #a9c0ca;
+            text-align: center;
+            padding: 22px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+
+            .hero {
+                padding: 50px 6%;
+            }
+
+            .quiz-box {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🌊 نبض المحيط</div>
+
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="pollution.html">التلوث البحري</a>
+            <a href="technology.html">التقنيات البحرية</a>
+            <a href="gallery.html">معرض المحيط</a>
+            <a href="facts.html" class="active">حقائق بحرية</a>
+            <a href="feedback.html">الرأي والتقييم</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <div class="hero-content">
+                <div class="tag">اكتشف ما وراء الأمواج</div>
+
+                <h1>
+                    حقائق مذهلة عن
+                    <span>عالم المحيطات</span>
+                </h1>
+
+                <p>
+                    يخفي عالم البحار أسرارًا علمية مدهشة؛
+                    من أعماق لم تُستكشف بالكامل إلى كائنات
+                    فريدة وتقنيات تساعدنا على فهم هذا العالم
+                    وحمايته.
+                </p>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title">
+                هل تعرف هذه <span>الحقائق؟</span>
+            </h2>
+
+            <p class="description">
+                معلومات مختارة تكشف جانبًا من أهمية المحيطات
+                وتنوع الحياة البحرية.
+            </p>
+
+            <div class="facts-grid">
+
+                <div class="fact-card">
+                    <div class="fact-icon">🌍</div>
+                    <h3>عالم واسع</h3>
+                    <p>
+                        تغطي المحيطات نحو 71% من سطح الأرض،
+                        وتؤدي دورًا مهمًا في تنظيم المناخ
+                        ودورة المياه.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🐋</div>
+                    <h3>تنوع الحياة البحرية</h3>
+                    <p>
+                        تعيش في البحار والمحيطات كائنات كثيرة
+                        ومتنوعة، من الكائنات المجهرية إلى
+                        الحيتان الضخمة.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🌡️</div>
+                    <h3>تنظيم حرارة الأرض</h3>
+                    <p>
+                        تمتص المحيطات كميات كبيرة من الحرارة
+                        وتوزعها التيارات البحرية، مما يؤثر
+                        في مناخ مناطق مختلفة من العالم.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🔬</div>
+                    <h3>أعماق غير مستكشفة بالكامل</h3>
+                    <p>
+                        ما زال العلماء يدرسون أعماق المحيطات
+                        ويكتشفون أنواعًا وخصائص جديدة مع
+                        تطور وسائل البحث.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🫧</div>
+                    <h3>العوالق النباتية</h3>
+                    <p>
+                        تقوم العوالق النباتية بعملية البناء
+                        الضوئي، وتسهم في إنتاج جزء مهم من
+                        الأكسجين الذي ينتجه النظام الحيوي للأرض.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🌊</div>
+                    <h3>التيارات البحرية</h3>
+                    <p>
+                        تنقل التيارات البحرية الحرارة
+                        والمغذيات، وتؤثر في حياة الكائنات
+                        البحرية والظروف المناخية.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="ocean-section">
+            <h2 class="section-title">
+                المحيطات و<span>التلوث البلاستيكي</span>
+            </h2>
+
+            <p class="description">
+                تؤثر النفايات التي تصل إلى البحار في الكائنات
+                البحرية والموائل الطبيعية.
+            </p>
+
+            <div class="feature">
+                <img
+                    src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=1000&q=85"
+                    alt="نفايات بلاستيكية">
+
+                <div class="feature-text">
+                    <h3>من أين تأتي النفايات البحرية؟</h3>
+
+                    <p>
+                        يصل جزء من النفايات البحرية من اليابسة
+                        عبر الأنهار ومياه الأمطار والرياح،
+                        كما تنتج بعض النفايات عن الأنشطة
+                        التي تتم في البحر.
+                    </p>
+
+                    <p>
+                        قد تبتلع الكائنات البحرية قطع البلاستيك
+                        أو تتشابك فيها. كما يمكن أن يتفتت
+                        البلاستيك إلى جسيمات دقيقة تنتشر
+                        في البيئة.
+                    </p>
+
+                    <p>
+                        يساعد تقليل استخدام المنتجات البلاستيكية
+                        أحادية الاستخدام، وفرز النفايات والتخلص
+                        منها بطريقة صحيحة، على الحد من وصولها
+                        إلى البيئة.
+                    </p>
+
+                    <a href="pollution.html" class="button">
+                        تعرّف على التلوث البحري
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                كيف تساعد <span>التقنية المحيطات؟</span>
+            </h2>
+
+            <p class="description">
+                يستفيد الباحثون من الأدوات الحديثة في دراسة
+                البحار ومراقبة التغيرات البيئية.
+            </p>
+
+            <div class="facts-grid">
+
+                <div class="fact-card">
+                    <div class="fact-icon">🛰️</div>
+                    <h3>الأقمار الصناعية</h3>
+                    <p>
+                        تساعد على رصد مساحات واسعة من المحيطات
+                        ومراقبة بعض التغيرات التي تحدث على سطحها.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🤖</div>
+                    <h3>الذكاء الاصطناعي</h3>
+                    <p>
+                        يمكن استخدامه لتحليل الصور والبيانات
+                        والمساعدة في التعرف على أنماط التلوث
+                        عند توافر بيانات مناسبة.
+                    </p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">📡</div>
+                    <h3>أجهزة الاستشعار</h3>
+                    <p>
+                        تقيس خصائص محددة للمياه، مثل درجة
+                        الحرارة والملوحة وبعض مؤشرات جودتها.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="text-align: center;">
+                <a href="technology.html" class="button">
+                    اكتشف التقنيات البحرية
+                </a>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2 class="section-title">
+                اختبر <span>معلوماتك البحرية</span>
+            </h2>
+
+            <p class="description">
+                أجب عن الأسئلة الثلاثة، ثم اضغط على زر
+                إظهار النتيجة لمعرفة عدد إجاباتك الصحيحة.
+            </p>
+
+            <div class="quiz-box">
+
+                <form id="quizForm">
+
+                    <div class="question">
+                        <h3>١. ما النسبة التقريبية التي تغطيها المحيطات من سطح الأرض؟</h3>
+
+                        <label>
+                            <input type="radio" name="q1" value="a">
+                            ٣٠٪
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q1" value="b">
+                            ٥٠٪
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q1" value="c">
+                            ٧١٪
+                        </label>
+                    </div>
+
+                    <div class="question">
+                        <h3>٢. أي تقنية تساعد في تحليل الصور والبيانات البحرية؟</h3>
+
+                        <label>
+                            <input type="radio" name="q2" value="a">
+                            الذكاء الاصطناعي
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q2" value="b">
+                            الورق فقط
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q2" value="c">
+                            لا توجد أي تقنية
+                        </label>
+                    </div>
+
+                    <div class="question">
+                        <h3>٣. ما السلوك الذي يساعد على تقليل التلوث البلاستيكي؟</h3>
+
+                        <label>
+                            <input type="radio" name="q3" value="a">
+                            رمي النفايات في البحر
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q3" value="b">
+                            تقليل النفايات والتخلص منها بطريقة صحيحة
+                        </label>
+
+                        <label>
+                            <input type="radio" name="q3" value="c">
+                            ترك النفايات على الشاطئ
+                        </label>
+                    </div>
+
+                    <button type="submit" class="button">
+                        إظهار النتيجة
+                    </button>
+
+                </form>
+
+                <div id="result" role="status" aria-live="polite"></div>
+
+            </div>
+        </section>
+
+        <section class="closing">
+            <h2 class="section-title">
+                المعرفة بداية <span>الحماية</span>
+            </h2>
+
+            <p>
+                كلما فهمنا المحيطات بصورة أفضل، أصبحنا أقدر
+                على تقدير أهميتها والمشاركة في حمايتها.
+                فلنجعل المعرفة خطوة نحو مستقبل أكثر استدامة.
+            </p>
+
+            <a href="gallery.html" class="button">
+                شاهد معرض المحيط
+            </a>
+
+            <a href="feedback.html" class="button">
+                شاركنا رأيك
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>نبض المحيط | Ocean Pulse</p>
+        <p>معًا من أجل محيط أنظف ومستقبل أكثر استدامة</p>
+    </footer>
+
+    <script>
+        const quizForm = document.getElementById("quizForm");
+        const result = document.getElementById("result");
+
+        quizForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const answers = {
+                q1: "c",
+                q2: "a",
+                q3: "b"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            for (const question in answers) {
+                const selected = quizForm.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+                if (selected) {
+                    answered++;
+
+                    if (selected.value === answers[question]) {
+                        score++;
+                    }
+                }
+            }
+
+            result.style.display = "block";
+
+            if (answered < 3) {
+                result.textContent =
+                    "أجيبي عن جميع الأسئلة أولًا. أجبتِ عن " +
+                    answered + " من 3 أسئلة.";
+            } else {
+                result.textContent =
+                    "نتيجتك: " + score + " من 3! " +
+                    (score === 3
+                        ? "ممتاز! لديكِ معلومات رائعة عن المحيطات."
+                        : "أحسنتِ المحاولة! يمكنكِ مراجعة المعلومات والمحاولة مرة أخرى.");
+            }
+        });
+    </script>
+
+</body>
+</html>

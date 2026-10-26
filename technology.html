@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقنيات البحرية | نبض المحيط</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #061b2b;
+            color: white;
+            line-height: 1.9;
+        }
+
+        header {
+            background: #08283b;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #176b78;
+        }
+
+        .logo {
+            color: #62e5dc;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #62e5dc;
+        }
+
+        .hero {
+            min-height: 440px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(3, 22, 36, 0.72),
+                rgba(3, 22, 36, 0.86)),
+                url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #62e5dc;
+            color: #62e5dc;
+            padding: 5px 17px;
+            border-radius: 30px;
+            margin-bottom: 17px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 53px);
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        h1 span,
+        .section-title span {
+            color: #62e5dc;
+        }
+
+        .hero p {
+            color: #e0edf2;
+            font-size: 17px;
+            max-width: 650px;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #b8cbd5;
+            max-width: 760px;
+            margin: 0 auto 35px;
+        }
+
+        .intro {
+            background: #082236;
+        }
+
+        .intro-box {
+            max-width: 900px;
+            margin: auto;
+            border-right: 4px solid #62e5dc;
+            padding: 22px 25px;
+            background: #0b2b40;
+            border-radius: 10px;
+        }
+
+        .intro-box p {
+            color: #d3e2e9;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: #0b2b40;
+            border: 1px solid #17475a;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #62e5dc;
+        }
+
+        .card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card h3 {
+            color: #62e5dc;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #c4d4dc;
+            font-size: 14px;
+        }
+
+        .idea-section {
+            background: linear-gradient(135deg, #0b3548, #0b263b);
+        }
+
+        .idea-box {
+            max-width: 950px;
+            margin: auto;
+            padding: 32px;
+            background: #082236;
+            border: 1px solid #287987;
+            border-radius: 16px;
+        }
+
+        .idea-box h3 {
+            color: #62e5dc;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .idea-box p {
+            color: #d0e0e6;
+            margin-bottom: 20px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 25px 0;
+        }
+
+        .step {
+            text-align: center;
+            background: #0b2b40;
+            border: 1px solid #17475a;
+            padding: 22px 15px;
+            border-radius: 12px;
+        }
+
+        .step .number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 43px;
+            height: 43px;
+            background: #62e5dc;
+            color: #062536;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            color: #62e5dc;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #c4d4dc;
+            font-size: 13px;
+        }
+
+        .note {
+            border-right: 4px solid #62e5dc;
+            padding: 15px 20px;
+            background: #0b2b40;
+            border-radius: 8px;
+            color: #d0e0e6;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit {
+            padding: 24px;
+            border: 1px solid #17475a;
+            border-radius: 12px;
+            background: #0b2b40;
+        }
+
+        .benefit h3 {
+            color: #62e5dc;
+            margin-bottom: 8px;
+        }
+
+        .benefit p {
+            color: #c4d4dc;
+            font-size: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #62e5dc;
+            color: #062536;
+            text-decoration: none;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 800;
+            margin-top: 18px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: white;
+        }
+
+        .closing {
+            text-align: center;
+            background: #08283b;
+        }
+
+        .closing p {
+            color: #c4d4dc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background: #041522;
+            color: #a9c0ca;
+            text-align: center;
+            padding: 22px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+
+            .hero {
+                padding: 50px 6%;
+            }
+
+            .idea-box {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🌊 نبض المحيط</div>
+
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="pollution.html">التلوث البحري</a>
+            <a href="technology.html" class="active">التقنيات البحرية</a>
+            <a href="gallery.html">معرض المحيط</a>
+            <a href="facts.html">حقائق بحرية</a>
+            <a href="feedback.html">الرأي والتقييم</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <div class="hero-content">
+                <div class="tag">الابتكار من أجل البيئة</div>
+
+                <h1>
+                    عندما تلتقي
+                    <span>التقنية بالمحيط</span>
+                </h1>
+
+                <p>
+                    أصبحت التقنيات الحديثة أدوات مهمة لفهم البيئة
+                    البحرية ومراقبة التغيرات التي تحدث فيها.
+                    ومن خلال الابتكار، يمكننا البحث عن طرق أكثر
+                    كفاءة للمساعدة في حماية محيطاتنا.
+                </p>
+            </div>
+        </div>
+
+        <section class="intro">
+            <h2 class="section-title">
+                ما دور <span>التقنيات البحرية؟</span>
+            </h2>
+
+            <p class="description">
+                تستخدم التقنيات البحرية أدوات وأجهزة حديثة لجمع
+                المعلومات عن المحيطات ودراسة الكائنات والظواهر البحرية.
+            </p>
+
+            <div class="intro-box">
+                <p>
+                    تساعد التقنيات البحرية العلماء والباحثين على
+                    مراقبة جودة المياه، ودراسة الحياة البحرية،
+                    ورصد بعض مصادر التلوث. وتختلف النتائج بحسب
+                    نوع التقنية والبيانات المتاحة وظروف استخدامها.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                تقنيات تساهم في <span>حماية المحيط</span>
+            </h2>
+
+            <p class="description">
+                لكل تقنية دور مختلف، ويمكن الاستفادة من عدة
+                تقنيات معًا للحصول على معلومات أكثر فائدة.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=80"
+                        alt="الأرض من الفضاء">
+                    <div class="card-content">
+                        <h3>الأقمار الصناعية</h3>
+                        <p>
+                            تساعد على مراقبة مساحات واسعة من سطح
+                            الأرض ورصد بعض التغيرات البحرية، مثل
+                            تغير لون المياه أو بعض البقع النفطية.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+                        alt="تقنيات وأجهزة إلكترونية">
+                    <div class="card-content">
+                        <h3>أجهزة الاستشعار</h3>
+                        <p>
+                            تقيس خصائص محددة مثل درجة الحرارة
+                            والملوحة وبعض مؤشرات جودة المياه،
+                            وفقًا لنوع المستشعر المستخدم.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
+                        alt="روبوت تقني">
+                    <div class="card-content">
+                        <h3>الروبوتات البحرية</h3>
+                        <p>
+                            يمكن للمركبات والروبوتات البحرية
+                            المجهزة بأدوات مناسبة استكشاف مناطق
+                            يصعب على الإنسان الوصول إليها.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+                        alt="تقنيات الذكاء الاصطناعي">
+                    <div class="card-content">
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>
+                            يمكن تدريب الأنظمة على تحليل الصور
+                            والبيانات والتعرف على أنماط قد تساعد
+                            في مراقبة بعض أنواع النفايات.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="idea-section">
+            <h2 class="section-title">
+                فكرتنا الابتكارية:
+                <span>رصد النفايات البلاستيكية</span>
+            </h2>
+
+            <p class="description">
+                فكرة مقترحة توظف التقنية للمساعدة في تحديد مواقع
+                النفايات البلاستيكية في البيئة البحرية.
+            </p>
+
+            <div class="idea-box">
+                <h3>كيف يمكن أن تعمل الفكرة؟</h3>
+
+                <p>
+                    نقترح تطوير نظام يجمع بين وسائل الرصد
+                    وتحديد المواقع، بحيث يساعد على اكتشاف النفايات
+                    البلاستيكية وتحديد موقعها وإرسال بيانات الموقع
+                    إلى وسيلة مخصصة لجمعها.
+                </p>
+
+                <div class="steps">
+
+                    <div class="step">
+                        <div class="number">1</div>
+                        <h4>رصد النفايات</h4>
+                        <p>
+                            استخدام كاميرا أو مستشعر مناسب
+                            للمساعدة في اكتشاف النفايات.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="number">2</div>
+                        <h4>تحديد الموقع</h4>
+                        <p>
+                            تسجيل الإحداثيات الجغرافية للنفايات
+                            عند توفر نظام تحديد موقع مناسب.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="number">3</div>
+                        <h4>إرسال المعلومات</h4>
+                        <p>
+                            إرسال بيانات الموقع إلى الجهة
+                            أو الوسيلة المسؤولة عن الجمع.
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="number">4</div>
+                        <h4>جمع النفايات</h4>
+                        <p>
+                            توجيه وسيلة الجمع إلى الموقع
+                            بعد التحقق من البيانات وسلامة الوصول.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="note">
+                    <strong>ملاحظة علمية:</strong>
+                    هذه فكرة مقترحة تحتاج إلى تصميم وتجارب
+                    واختبارات عملية للتأكد من دقة اكتشاف
+                    النفايات وتحديد مواقعها وإمكانية جمعها.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                فوائد توظيف التقنية في <span>حماية البحار</span>
+            </h2>
+
+            <p class="description">
+                عند اختيار التقنية المناسبة واستخدامها بطريقة
+                صحيحة، يمكن أن تدعم الجهود البيئية بعدة طرق.
+            </p>
+
+            <div class="benefits">
+
+                <div class="benefit">
+                    <h3>🔎 تحسين المراقبة</h3>
+                    <p>
+                        جمع بيانات تساعد على فهم أماكن التلوث
+                        والتغيرات التي تحدث في البيئة البحرية.
+                    </p>
+                </div>
+
+                <div class="benefit">
+                    <h3>📍 تحديد المواقع</h3>
+                    <p>
+                        المساعدة في الوصول إلى المواقع التي
+                        تحتاج إلى فحص أو تنظيف.
+                    </p>
+                </div>
+
+                <div class="benefit">
+                    <h3>📊 دعم القرارات</h3>
+                    <p>
+                        توفير معلومات يمكن الاستفادة منها
+                        عند التخطيط للمبادرات البيئية.
+                    </p>
+                </div>
+
+                <div class="benefit">
+                    <h3>🌊 حماية الحياة البحرية</h3>
+                    <p>
+                        دعم جهود الحد من النفايات وتقليل
+                        الأضرار المحتملة على الكائنات البحرية.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="closing">
+            <h2 class="section-title">
+                كل ابتكار يبدأ <span>بفكرة</span>
+            </h2>
+
+            <p>
+                قد تكون الفكرة الصغيرة بداية لمشروع مفيد،
+                عندما ندعمها بالبحث العلمي والتخطيط والتجربة.
+                فلنجعل التقنية وسيلة لخدمة المحيط والمحافظة عليه.
+            </p>
+
+            <a href="pollution.html" class="button">
+                العودة إلى التلوث البحري
+            </a>
+
+            <a href="feedback.html" class="button">
+                شاركنا رأيك
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>نبض المحيط | Ocean Pulse</p>
+        <p>معًا من أجل محيط أنظف ومستقبل أكثر استدامة</p>
+    </footer>
+
+</body>
+</html>

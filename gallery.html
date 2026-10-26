@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض المحيط | نبض المحيط</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #061b2b;
+            color: white;
+            line-height: 1.9;
+        }
+
+        header {
+            background: #08283b;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #176b78;
+        }
+
+        .logo {
+            color: #62e5dc;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #62e5dc;
+        }
+
+        .hero {
+            min-height: 400px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(3, 22, 36, 0.65),
+                rgba(3, 22, 36, 0.86)),
+                url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #62e5dc;
+            color: #62e5dc;
+            padding: 5px 17px;
+            border-radius: 30px;
+            margin-bottom: 17px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 53px);
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        h1 span,
+        .section-title span {
+            color: #62e5dc;
+        }
+
+        .hero p {
+            color: #e0edf2;
+            font-size: 17px;
+            max-width: 650px;
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            text-align: center;
+            color: #b8cbd5;
+            max-width: 760px;
+            margin: 0 auto 35px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .photo-card {
+            background: #0b2b40;
+            border: 1px solid #17475a;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            border-color: #62e5dc;
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .photo-info {
+            padding: 18px 20px;
+        }
+
+        .photo-info h3 {
+            color: #62e5dc;
+            font-size: 19px;
+            margin-bottom: 7px;
+        }
+
+        .photo-info p {
+            color: #c4d4dc;
+            font-size: 14px;
+        }
+
+        .video-section {
+            background: linear-gradient(135deg, #0b3548, #0b263b);
+        }
+
+        .video-box {
+            max-width: 900px;
+            margin: auto;
+            background: #082236;
+            border: 1px solid #287987;
+            padding: 22px;
+            border-radius: 16px;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            max-height: 500px;
+            background: #020b12;
+            border-radius: 10px;
+        }
+
+        .video-caption {
+            text-align: center;
+            color: #d0e0e6;
+            margin-top: 17px;
+        }
+
+        .video-caption h3 {
+            color: #62e5dc;
+            margin-bottom: 7px;
+        }
+
+        .message {
+            text-align: center;
+            background: #082236;
+        }
+
+        .message p {
+            color: #c4d4dc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .button {
+            display: inline-block;
+            background: #62e5dc;
+            color: #062536;
+            text-decoration: none;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 800;
+            margin-top: 18px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: white;
+        }
+
+        footer {
+            background: #041522;
+            color: #a9c0ca;
+            text-align: center;
+            padding: 22px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+
+            .hero {
+                padding: 50px 6%;
+            }
+
+            .video-box {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🌊 نبض المحيط</div>
+
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="pollution.html">التلوث البحري</a>
+            <a href="technology.html">التقنيات البحرية</a>
+            <a href="gallery.html" class="active">معرض المحيط</a>
+            <a href="facts.html">حقائق بحرية</a>
+            <a href="feedback.html">الرأي والتقييم</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <div class="hero-content">
+                <div class="tag">جمال الطبيعة وأهمية حمايتها</div>
+
+                <h1>
+                    نافذتك إلى
+                    <span>عالم المحيطات</span>
+                </h1>
+
+                <p>
+                    تأمل جمال البحار وتنوع الحياة البحرية،
+                    واكتشف من خلال الصور والفيديو كيف يمكن
+                    للأفكار والتقنيات أن تسهم في حماية بيئتنا.
+                </p>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title">
+                معرض <span>الصور البحرية</span>
+            </h2>
+
+            <p class="description">
+                رحلة بصرية بين أعماق المحيطات، والكائنات البحرية،
+                والشعاب المرجانية، وأهمية المحافظة على هذا العالم.
+            </p>
+
+            <div class="gallery">
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85"
+                        alt="أمواج المحيط">
+                    <div class="photo-info">
+                        <h3>سحر المحيط</h3>
+                        <p>
+                            مساحات زرقاء شاسعة تجعل المحيطات
+                            من أجمل مظاهر الطبيعة.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=900&q=85"
+                        alt="الشعاب المرجانية والحياة البحرية">
+                    <div class="photo-info">
+                        <h3>عالم تحت الماء</h3>
+                        <p>
+                            موائل بحرية متنوعة تدعم حياة
+                            أنواع كثيرة من الكائنات.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=900&q=85"
+                        alt="مياه البحر الصافية">
+                    <div class="photo-info">
+                        <h3>المياه الزرقاء</h3>
+                        <p>
+                            المحافظة على نظافة البحار مهمة
+                            لاستمرار التوازن البيئي.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=900&q=85"
+                        alt="كائن بحري في المحيط">
+                    <div class="photo-info">
+                        <h3>الحياة البحرية</h3>
+                        <p>
+                            لكل كائن بحري دور في النظام
+                            البيئي الذي يعيش فيه.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=900&q=85"
+                        alt="سلحفاة بحرية">
+                    <div class="photo-info">
+                        <h3>كائنات تستحق الحماية</h3>
+                        <p>
+                            الحفاظ على الموائل وتقليل النفايات
+                            يساعدان في حماية الحياة البحرية.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="photo-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=85"
+                        alt="منظر طبيعي للمياه والطبيعة">
+                    <div class="photo-info">
+                        <h3>طبيعة تستحق الاهتمام</h3>
+                        <p>
+                            حماية البيئة تبدأ بالوعي
+                            والسلوك المسؤول.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2 class="section-title">
+                شاهد <span>فكرتنا</span>
+                على أرض الواقع
+            </h2>
+
+            <p class="description">
+                شاهد الفيديو الذي أعددناه لعرض فكرتنا
+                المتعلقة بالاستفادة من التقنية في الحد
+                من النفايات البلاستيكية البحرية.
+            </p>
+
+            <div class="video-box">
+                <video controls preload="metadata">
+                    <source src="Mp4.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+
+                <div class="video-caption">
+                    <h3>التقنية من أجل محيط أنظف</h3>
+                    <p>
+                        فكرة تسعى إلى توظيف الابتكار للمساعدة
+                        في تحديد مواقع النفايات البلاستيكية
+                        وتسهيل الوصول إليها لجمعها.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="message">
+            <h2 class="section-title">
+                صورة اليوم، <span>مسؤولية الغد</span>
+            </h2>
+
+            <p>
+                جمال المحيطات ليس مجرد مشهد نراه، بل ثروة طبيعية
+                تستحق الحماية. لنجعل معرفتنا بالتلوث والتقنية
+                بداية لخطوات إيجابية تجاه بيئتنا البحرية.
+            </p>
+
+            <a href="technology.html" class="button">
+                اكتشف التقنيات البحرية
+            </a>
+
+            <a href="feedback.html" class="button">
+                شاركنا رأيك
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>نبض المحيط | Ocean Pulse</p>
+        <p>معًا من أجل محيط أنظف ومستقبل أكثر استدامة</p>
+    </footer>
+
+</body>
+</html>
